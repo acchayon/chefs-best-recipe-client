@@ -15,9 +15,9 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">Profile</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
+                        <Link to='/login'>
                             <Button variant="primary">Login</Button>
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SingleChef from './SingleChef';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Chefs = () => {
     const [chefs, setChefs] = useState([]);
@@ -14,7 +14,7 @@ const Chefs = () => {
     return (
         <Container>
             <h2 className='text-center mb-4 mt-3'>Here is Our top bangladeshi chefs</h2>
-            <div>
+            <div className='row row-cols-1 row-cols-md-2 g-4'>
                 {
                     chefs.map(chef => <SingleChef
                         key={chef.id}
@@ -22,8 +22,10 @@ const Chefs = () => {
                     ></SingleChef>)
                 }
             </div>
+
         </Container>
     );
 };
 
 export default Chefs;
+
