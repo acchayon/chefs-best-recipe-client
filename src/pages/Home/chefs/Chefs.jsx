@@ -1,0 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import SingleChef from './SingleChef';
+import { Container } from 'react-bootstrap';
+
+const Chefs = () => {
+    const [chefs, setChefs] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/chefs')
+            .then(res => res.json())
+            .then(data => setChefs(data))
+            .catch(error => console.log(error))
+    }, [])
+    return (
+        <Container>
+            <h2 className='text-center mb-4 mt-3'>Here is Our top bangladeshi chefs</h2>
+            <div>
+                {
+                    chefs.map(chef => <SingleChef
+                        key={chef.id}
+                        chef={chef}
+                    ></SingleChef>)
+                }
+            </div>
+        </Container>
+    );
+};
+
+export default Chefs;
