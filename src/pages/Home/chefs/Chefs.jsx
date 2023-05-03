@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SingleChef from './SingleChef';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const Chefs = () => {
     const [chefs, setChefs] = useState([]);
