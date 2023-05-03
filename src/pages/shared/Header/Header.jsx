@@ -1,8 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     return (
         <Container>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -14,10 +18,14 @@ const Header = () => {
                         <Link className='text-success text-decoration-none' to="/blog">Blog</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Profile</Nav.Link>
-                        <Link to='/login'>
-                            <Button variant="primary">Login</Button>
-                        </Link>
+                        {user &&
+                            <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>}
+
+                        {user ?
+                            <Button variant="primary">Log Out</Button> :
+                            <Link to='/login'>
+                                <Button variant="primary">Login</Button>
+                            </Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
