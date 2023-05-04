@@ -1,11 +1,17 @@
 import React from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaHeart } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Recipe = () => {
     const recipe = useLoaderData();
-    const { chef_name, chef_picture, name, recipe_1,image_url, description, number_of_recipes, years_of_experience } = recipe;
+
+    const hotToast = () => {
+        toast('wow, my favorite item')
+    }
+
+    const { chef_name, chef_picture, name, ingredients, image_url, description, number_of_recipes, years_of_experience } = recipe;
     return (
         <Container>
             <h2 className='text-center mt-5'>Our honorable Bangladeshi chef: <span className='text-primary'>{chef_name}</span> </h2>
@@ -23,17 +29,17 @@ const Recipe = () => {
 
             <hr />
 
-            {/* <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top"  src={image_url} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
+                       {ingredients}
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <FaHeart onClick={hotToast} fontSize={{height: '2rem'}}></FaHeart>
                 </Card.Body>
-            </Card> */}
+            </Card>
+            <Toaster />
         </Container>
     );
 };

@@ -1,27 +1,43 @@
 import React from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { FaArrowRight, FaThumbsUp } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Button, Card, Col } from 'react-bootstrap';
+import { FaArrowRight, FaHeart, FaThumbsUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SingleChef = ({ chef }) => {
-    const { id, chef_picture, chef_name, years_of_experience, number_of_recipes, likes } = chef;
+    const { id, chef_picture, chef_name, description, years_of_experience, number_of_recipes, likes } = chef;
+    
     return (
         <Col>
             <Card className='h-100 border-0 shadow-lg p-3 mb-5 bg-body-tertiary rounded' style={{ width: '28rem' }}>
-                <Card.Img style={{height: '350px'}} variant="top" src={chef_picture} />
+                <Card.Img style={{ height: '350px' }} variant="top" src={chef_picture} />
                 <Card.Body>
                     <Card.Title>{chef_name}</Card.Title>
                     <Card.Title>Experience: {years_of_experience} years +</Card.Title>
                     <Card.Title>Recipes: {number_of_recipes} +</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
+                        {description.length < 200 ? <>{description}</> : <>{description.slice(0, 200)}...<Link to={`/recipe/${id}`}>Read More</Link> </>}
                     </Card.Text>
-                    <p className=''>Likes: {likes} <FaThumbsUp></FaThumbsUp> </p>
+                    <div className='justify-content-between d-flex'>
+                        <p className=''>Likes: {likes} <FaThumbsUp className='ps-2' style={{ fontSize: '1.5rem' }} ></FaThumbsUp> </p>
+                        <FaHeart className='text-danger' style={{ fontSize: '1.5rem' }}></FaHeart>
+                    </div>
                     <Link to={`/recipe/${id}`}>
-                    <Button variant="primary">View Recipe <FaArrowRight></FaArrowRight> </Button></Link>
+                        <Button variant="primary">View Recipe <FaArrowRight></FaArrowRight> </Button></Link>
                 </Card.Body>
             </Card>
+
+            {/* <Card>
+                <Card.Img variant="top" src={chef_picture} />
+                <Card.Body>
+                    <Card.Title>{chef_name}</Card.Title>
+                    <Card.Text>
+                        {ingredients}
+                    </Card.Text>
+                    <p>Likes: {likes} <FaThumbsUp></FaThumbsUp> </p>
+                    <Button variant="primary">View Recipe <FaArrowRight></FaArrowRight> </Button>
+                </Card.Body>
+            </Card> */}
+            
         </Col>
     );
 };
@@ -29,18 +45,3 @@ const SingleChef = ({ chef }) => {
 export default SingleChef;
 
 
-{/* <Card>
-                <Card.Img variant="top" src={chef_picture} />
-                <Card.Body>
-                    <Card.Title>{chef_name}</Card.Title>
-                    <Card.Title>Experience: {years_of_experience} years +</Card.Title>
-                    <Card.Title>Recipes: {number_of_recipes} +</Card.Title>
-                    <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit
-                        longer.
-                    </Card.Text>
-                    <p>Likes: {likes} <FaThumbsUp></FaThumbsUp> </p>
-                    <Button variant="primary">View Recipe <FaArrowRight></FaArrowRight> </Button>
-                </Card.Body>
-            </Card> */}
