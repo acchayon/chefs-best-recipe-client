@@ -19,7 +19,6 @@ const SingleChef = ({ chef }) => {
                     </Card.Text>
                     <div className='justify-content-between d-flex'>
                         <p className=''>Likes: {likes} <FaThumbsUp className='ps-2' style={{ fontSize: '1.5rem' }} ></FaThumbsUp> </p>
-                        <FaHeart className='text-danger' style={{ fontSize: '1.5rem' }}></FaHeart>
                     </div>
                     <Link to={`/recipe/${id}`}>
                         <Button variant="primary">View Recipe <FaArrowRight></FaArrowRight> </Button></Link>

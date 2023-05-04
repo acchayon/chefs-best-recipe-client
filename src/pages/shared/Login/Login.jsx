@@ -8,7 +8,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const location = useLocation();
     console.log('login page ' ,location)
-    const from = location.state?.from?.pathname ;
+    const from = location.state?.from?.pathname || '/' ;
 
     const navigate = useNavigate();
 

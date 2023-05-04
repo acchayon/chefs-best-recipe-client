@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
 import { FaArrowLeft, FaHeart } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
@@ -8,7 +8,7 @@ const Recipe = () => {
     const recipe = useLoaderData();
 
     const hotToast = () => {
-        toast('wow, my favorite item')
+        toast('wow, added to my favorite list')
     }
 
     const { chef_name, chef_picture, name, ingredients, image_url, description, number_of_recipes, years_of_experience } = recipe;
@@ -36,7 +36,7 @@ const Recipe = () => {
                     <Card.Text>
                        {ingredients}
                     </Card.Text>
-                    <FaHeart onClick={hotToast} fontSize={{height: '2rem'}}></FaHeart>
+                    <FaHeart onClick={hotToast} className='text-danger' fontSize={{height: '2rem'}}></FaHeart>
                 </Card.Body>
             </Card>
             <Toaster />
