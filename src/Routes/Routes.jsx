@@ -6,6 +6,7 @@ import Authentic from "../layouts/Authentic";
 import Login from "../pages/shared/Login/Login";
 import Register from "../pages/shared/Register/Register";
 import Recipe from "../pages/Recipe/Recipe";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recipe/:id',
-                element: <Recipe></Recipe>,
+                element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
             },
             {
