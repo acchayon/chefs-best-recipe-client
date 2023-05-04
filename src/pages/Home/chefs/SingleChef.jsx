@@ -8,7 +8,7 @@ const SingleChef = ({ chef }) => {
     
     return (
         <Col>
-            <Card className='h-100 border-0 shadow-lg p-3 mb-5 bg-body-tertiary rounded' style={{ width: '28rem' }}>
+            <Card className='h-100 border-0 shadow-lg p-3 mb-5 bg-body-tertiary rounded' style={{ width: '34rem' }}>
                 <Card.Img style={{ height: '350px' }} variant="top" src={chef_picture} />
                 <Card.Body>
                     <Card.Title>{chef_name}</Card.Title>
